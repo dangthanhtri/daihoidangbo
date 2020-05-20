@@ -8,7 +8,7 @@
             "type": "chrome",
             "request": "launch",
             "name": "Launch Chrome against localhost",
-            "url": "file:///C:/Users/super/Desktop/show-avatar/showavatar.html",
+            "url": "file:///C:/Users/super/Desktop/show-avatar/index.html",
             "webRoot": "${workspaceFolder}"
         }
     ]
