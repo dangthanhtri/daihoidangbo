@@ -1,0 +1,84 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Avatar</title>
+  <style>
+      body{
+        background-image:url(./webpage.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 100%;
+        height: 56.25%;
+      }
+      .container{
+        text-align: center;
+            position: absolute;
+            right: 30px;
+            top: 215px;
+            color: red;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      #avatar{
+          width: 127px;
+          height: 170px;
+      }
+      
+      #name{
+        
+      }
+      #job{
+
+      }
+  </style>
+</head>
+
+<body>
+    <div class='container'>
+        <img id='avatar' src='' />
+        <div class="infor">
+            <h2 id='name'></h2>
+            <h2 id='job'></h2>
+        </div>
+    </div>
+    
+  <!-- Modifying index page -->
+  <script  src="https://www.gstatic.com/firebasejs/7.3.0/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-database.js"></script>
+        <script>
+            const firebaseConfig = {
+            apiKey: "AIzaSyC8kZN3Dnt3VBvqJvWwDfFZpTBPb7V6s5M",
+            authDomain: "checkin-system-4aa77.firebaseapp.com",
+            databaseURL: "https://checkin-system-4aa77.firebaseio.com",
+            projectId: "checkin-system-4aa77",
+            storageBucket: "checkin-system-4aa77.appspot.com",
+            messagingSenderId: "377899531790",
+            appId: "1:377899531790:web:96f27cf567ae0a15f8065f"
+            };
+
+        // Initialize Firebase  
+        firebase.initializeApp(firebaseConfig)
+        const db = firebase.database();
+        </script>
+        <script>
+            db.ref('/APP/').on('value', (snapshot)=>{
+                let data = snapshot.val();
+                let avatar = document.getElementById('avatar');
+                let name = document.getElementById('name');
+                let job = document.getElementById('job');
+
+                name.innerText = data.NAME;
+                job.innerText = data.JOB;
+                avatar.src = data.PIC;
+                
+            })
+    
+        </script>
+</body>
+
+</html>
